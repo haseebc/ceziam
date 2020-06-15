@@ -17,8 +17,23 @@ rails new \
 -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
 ceziam
 ```
-Versions: `Rails 6.0.3.1` `ruby 2.6.6p146`
-
+- Versions: `Rails 6.0.3.1` `ruby 2.6.6p146`
+- Install Node locally from here https://nodejs.org/en/download/
+### Gems files to add
+```ruby
+gem 'bourbon'
+gem 'crack'
+gem 'jquery-rails'
+gem 'json'
+gem 'meta-tags'
+gem 'net-scp'
+gem 'net-ssh'
+gem 'pygments.rb'
+gem 'redcarpet'
+gem 'sidekiq'
+gem 'sidekiq-failures'
+gem 'sitemap_generator'
+```
 
 
 ## Frontend <a name="frontend"></a>
@@ -27,6 +42,7 @@ Versions: `Rails 6.0.3.1` `ruby 2.6.6p146`
 ```ruby
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 ```
+Now get the basic view setup.
 
 
 
