@@ -7,5 +7,10 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 ## Frontend <a name="frontend"></a>
 ### Views <a name="views"></a>
+`application.html.erb`
+```ruby
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+```
+
 
 
