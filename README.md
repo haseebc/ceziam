@@ -2,11 +2,21 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 # Ceziam How its Written
 # Table of contents
 
-1. [Frontend](#frontend)
-    1. [Views](#views)
+1. [Overview](#overview)
+    1. [Skeleton](#skeleton)
 2. [Frontend](#frontend)
     1. [Views](#views)
 3. [Routes](#routes)
+
+## Overview
+### Skeleton <a name="skeleton"></a>
+```bash
+rails new \
+--database postgresql \
+--webpack \
+-m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
+ceziam
+```
 
 ## Frontend <a name="frontend"></a>
 ### Views <a name="views"></a>
