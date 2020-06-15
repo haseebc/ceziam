@@ -4,6 +4,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 1. [Overview](#overview)
     1. [Skeleton](#skeleton)
+    2. [Gem files to add](#gems)
 2. [Frontend](#frontend)
     1. [Views](#views)
 3. [Routes](#routes)
@@ -19,7 +20,7 @@ ceziam
 ```
 - Versions: `Rails 6.0.3.1` `ruby 2.6.6p146`
 - Install Node locally from here https://nodejs.org/en/download/
-### Gems files to add
+### Gems files to add <a name="gems"></a>
 ```ruby
 gem 'bourbon'
 gem 'crack'
