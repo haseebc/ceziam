@@ -1,5 +1,5 @@
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
-# Ceziam, How It´s Written
+# Ceziam, How It Was Written 
 # Table of contents
 
 1. [Overview](#overview)
