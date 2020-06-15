@@ -17,6 +17,9 @@ rails new \
 -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
 ceziam
 ```
+Versions: `Rails 6.0.3.1` `ruby 2.6.6p146`
+
+
 
 ## Frontend <a name="frontend"></a>
 ### Views <a name="views"></a>
