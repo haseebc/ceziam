@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'checks/full_report'
+  devise_for :users, controllers: { registrations: 'registrations' }
+
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :checks do
+    resources :vulnerabilities, only: %i[new create]
+    get 'full-report'
+  end
+
+  resources :users, only: %i[edit update]
+
+
 end
