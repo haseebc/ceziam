@@ -9,6 +9,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
     1. [Views](#views)
 3. [Routes](#routes)
 4. [Controller](#controller)
+5. [Models](#model)
 
 
 ## Overview
@@ -184,7 +185,45 @@ Then we define methods in the checks_controller.rb
     user_input.match(valid_hostname_regex)
   end
 ```
+We now get the error `uninitialized constant ChecksController::Check`as there is no class called Check. This needs to be done
+- model check.rb with Check class 
+- model vulnerability.rb with Vulnerability class 
+- Services check_service.rb
+- Workers hard.worker.rb
 
+## Models <a name="skeleton"></a>
+We need to create the checks and vulnerabilities table. we can do this by creating a new model or standalone migration. 
+Lets do **checks** table first.
+```bash
+rails generate model Check ip:string hostname:string scandur:string score:integer user_id:bigint fullresponse:jsonb attacksurface:jsonb domcheck_duration:integer duration:string 
+```
+This then does the following:
+```ruby
+      create    db/migrate/20200616101333_create_checks.rb
+      create    app/models/check.rb
+```
+This is an empty model check.rb containing the class Check. And also an migration file for all the new `checks` table. 
+```ruby
+class CreateChecks < ActiveRecord::Migration[6.0]
+  def change
+    create_table :checks do |t|
+      t.string :ip
+      t.string :hostname
+      t.string :scandur
+      t.integer :score
+      t.bigint :user_id
+      t.jsonb :fullresponse
+      t.jsonb :attacksurface
+      t.integer :domcheck_duration
+      t.string :duration
+
+      t.timestamps
+    end
+  end
+end
+```
+
+Create a New Table called Vulnerabilities
 
 ## Improvements
 - structure landing page as a html doc.
