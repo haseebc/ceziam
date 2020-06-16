@@ -8,6 +8,8 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 2. [Frontend](#frontend)
     1. [Views](#views)
 3. [Routes](#routes)
+4. [Controller](#controller)
+
 
 ## Overview
 ### Skeleton <a name="skeleton"></a>
@@ -52,14 +54,12 @@ You can just copy the URL page as such below. The css won't work, we'll get that
 <!-- SEO Meta-tags -->
 <% set_meta_tags title: 'Cyber-security checker',
                 description: 'Detect your core cyber security risks including dangerous ports and attack surface with a simple website freely available to all.' %>
-
 <div class="banner-green">
     <%= render 'shared/navbar' %>
     <div class="header-description">
         <h1><p class="header-title">Welcome to Ceziam</p></h1>
         <h2><p
         class="page-description">Detect your core cyber security risks with a simple website freely available to all.</p><h2>
-
     <form id="search" action="/checks#report-banner-1" method="post">
       <div>
        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -95,11 +95,8 @@ You can just copy the URL page as such below. The css won't work, we'll get that
       </div>
       </div>
     </form>
-
-
     </div>
 </div>
-
 <script>
   const form = document.querySelector('#search');
   const gif = document.querySelector("#loading-symbol");
@@ -108,6 +105,33 @@ You can just copy the URL page as such below. The css won't work, we'll get that
   });
 </script>
 ```
+## Routes
+### Routing <a name="routes"></a>
+```ruby
+  root to: 'pages#home'
+
+  resources :checks do
+    resources :vulnerabilities, only: %i[new create]
+    get 'full-report'
+  end
+```
+Here we have a root url going to `pages controller/home.html`
+```ruby
+verb "url", to: "controller#action"
+```
+## Controller
+### Controller <a name="controller"></a>
+`rails g controller Checks full_report``
+```ruby
+      create  app/controllers/checks_controller.rb
+       route  get 'checks/full_report'
+      invoke  erb
+      create    app/views/checks
+      create    app/views/checks/full_report.html.erb
+      invoke  test_unit
+      create    test/controllers/checks_controller_test.rb
+```
 
 
-
+## Improvements
+- structure landing page as a html doc.
