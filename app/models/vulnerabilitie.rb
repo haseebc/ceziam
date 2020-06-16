@@ -1,0 +1,2 @@
+class Vulnerabilitie < ApplicationRecord
+end
