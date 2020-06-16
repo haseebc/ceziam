@@ -10,6 +10,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 3. [Routes](#routes)
 4. [Controller](#controller)
 5. [Models](#model)
+    1. [checks table](#checks)
 
 
 ## Overview
@@ -191,9 +192,10 @@ We now get the error `uninitialized constant ChecksController::Check`as there is
 - Services check_service.rb
 - Workers hard.worker.rb
 
-## Models <a name="skeleton"></a>
+## Models <a name="model"></a>
 We need to create the checks and vulnerabilities table. we can do this by creating a new model or standalone migration. 
 Lets do **checks** table first.
+### checks table  <a name="checks"></a>
 ```bash
 rails generate model Check ip:string hostname:string scandur:string score:integer user_id:bigint fullresponse:jsonb attacksurface:jsonb domcheck_duration:integer duration:string 
 ```
@@ -223,7 +225,54 @@ class CreateChecks < ActiveRecord::Migration[6.0]
 end
 ```
 
-Create a New Table called Vulnerabilities
+`rails db:migrate`
+We then get the following table:
+```ruby
+  create_table "checks", force: :cascade do |t|
+    t.string "ip"
+    t.string "hostname"
+    t.string "scandur"
+    t.integer "score"
+    t.bigint "user_id"
+    t.jsonb "fullresponse"
+    t.jsonb "attacksurface"
+    t.integer "domcheck_duration"
+    t.string "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+```
+`rails g migration AddStateToChecks`then update the migration file manually
+```ruby
+ class AddStateToChecks < ActiveRecord::Migration[6.0]
+  def change
+    add_column :checks, :state, :string, default: "pending"
+  end
+end 
+```
+`rails db:migrate`
+Now add the foeign key `rails g migration Checks`, edit the migration file adding the following:
+`add_foreign_key :checks, :users`
+
+## Create a New Table called vulnerabilities
+```bash
+rails generate model Vulnerabilitie port:string protocol:string state:string service:string check_id:bigint version:string reason:string product:string weakness:string risk:string recommandation:string impact:integer likelihood:integer netrisk:integer
+```
+Manually edit migration file and add:
+```ruby
+      t.index ["check_id"], name: "index_vulnerabilities_on_check_id"
+```
+
+Add the foreign key `rails g migration Vulnerabilities`
+```ruby
+class Vulnerabilities < ActiveRecord::Migration[6.0]
+  def change
+    add_foreign_key "vulnerabilities", "checks"
+  end
+end
+```
+Note **app/models/vulnerabilitie.rb** has been created and is not used for anything.
 
 ## Improvements
 - structure landing page as a html doc.
+- Note app/models/vulnerabilitie.rb has been created and is not used for anything. Can be deleted or infuture do a standalone migration instead. 
