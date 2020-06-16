@@ -121,7 +121,7 @@ verb "url", to: "controller#action"
 ```
 ## Controller
 ### Controller <a name="controller"></a>
-`rails g controller Checks full_report``
+`rails g controller Checks full_report`
 ```ruby
       create  app/controllers/checks_controller.rb
        route  get 'checks/full_report'
