@@ -12,7 +12,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 5. [Models](#model)
     1. [checks table](#checks)
 6. [Attack Engine](#attackengine)
-    1. Calling Attack Calls(#attackcalls)
+    1. [Calling Attack Calls](#attackcalls)
 
 
 ## Overview
