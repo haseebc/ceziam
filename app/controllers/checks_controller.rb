@@ -6,6 +6,7 @@ class ChecksController < ApplicationController
   end
 
   def create
+   
     hostname_verified = hostname_valid?(params[:hostname])
     if hostname_verified
       @check = Check.new(hostname: hostname_verified)
@@ -29,6 +30,7 @@ class ChecksController < ApplicationController
   end
 
   def show
+    
     @check = Check.find(params[:id])
   end
 
