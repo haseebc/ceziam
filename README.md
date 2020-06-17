@@ -11,8 +11,8 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 4. [Controller](#controller)
 5. [Models](#model)
     1. [checks table](#checks)
-6. [Attack Engine](#attack engine)
-    1. Calling Attack Scripts(#attackscripts)
+6. [Attack Engine](#attackengine)
+    1. Calling Attack Scripts(#attackcalls)
 
 
 ## Overview
@@ -276,7 +276,7 @@ end
 Note **app/models/vulnerabilitie.rb** has been created and is not used for anything.
 
 ## Attack Engine <a name="attackengine"></a>
-### Calling Attack Scripts <a name="attackscripts"></a>
+### Calling Attack Scripts <a name="attackcalls"></a>
 Inputting attack domain results in action `/checks#report-banner-1`. Create action in checks controller invoked the Check class.
 The check class is in model check.rb. 
 The Check class method then triggers `HardWorker` class which then starts the CheckService class `run` method.   
