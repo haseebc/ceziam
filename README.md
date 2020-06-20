@@ -11,6 +11,8 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 4. [Controller](#controller)
 5. [Models](#model)
     1. [checks table](#checks)
+6. [Attack Engine](#attackengine)
+    1. Attack Calls(#attackcalls)
 
 
 ## Overview
@@ -286,3 +288,12 @@ Note I had a to rename `vulnerabilitie.rb` to `vulnerability.rb`. What i should 
 ```bash
 heroku ps:exec
 ```
+
+## Attack Engine <a name="attackengine"></a>
+### Attack Calls <a name="attackcalls"></a>
+Inputting attack domain results in action /checks#report-banner-1. Create action in checks controller invoked the Check class. The check class is in model check.rb. The Check class method then triggers HardWorker class which then starts the CheckService class run method.
+
+    def run_async_check
+        HardWorker.perform_async(id)
+    end
+CheckService class run method is the calling of the scripts to launch the attack.
