@@ -194,6 +194,103 @@ We now get the error `uninitialized constant ChecksController::Check`as there is
 - Services check_service.rb
 - Workers hard.worker.rb
 
+#### Resitrations Controller
+`rails generate controller RegistrationsController`
+```ruby
+class RegistrationsController < Devise::RegistrationsController
+
+    before_action :configure_permitted_parameters, if: :devise_controller?
+  
+    protected
+  
+    def configure_permitted_parameters
+      # For additional fields in app/views/devise/registrations/new.html.erb
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[firstname lastname company])
+  
+      # For additional in app/views/devise/registrations/edit.html.erb
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[firstname lastname company])
+      end
+  
+    def after_sign_up_path_for(_resource)
+      check_full_report_path(session[:last_check_id], anchor: 'report-banner-1') if session[:last_check_id]
+    end
+  
+  end
+  
+```
+#### Users Controller
+`rails generate controller UsersController`
+```ruby
+class UsersController < ApplicationController
+
+    def edit
+      @user = current_user
+    end
+  
+    def update
+      @user = current_user
+      if @user.update(user_params)
+        redirect_to dashboard_profile_path
+      else
+        flash[:alert] = 'An error occured.'
+        render :edit
+      end
+    end
+  
+    private
+  
+    def user_params
+      params.require(:user).permit(:firstname, :lastname, :email, :company, :profilepicture)
+    end
+  
+  end
+```
+#### Applications Controller
+Edit the emply `application_controller.rb`file
+```ruby
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def configure_permitted_parameters
+    # For additional fields in app/views/devise/registrations/new.html.erb
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[firstname lastname company])
+
+    # For additional in app/views/devise/registrations/edit.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[firstname lastname company])
+  end
+
+  def after_sign_in_path_for(resource)
+    if session[:last_check_id]
+      check = Check.find(session[:last_check_id])
+      check.user = resource
+      check.save
+      dashboard_profile_path(resource)
+    elsif session[:article_id]
+      article_path(Article.find(session[:article_id]))
+    else
+      request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+    end
+  end
+end
+```
+#### Dashboard Controller
+```bash
+rails g controller DashboardController
+```
+
+```ruby
+class DashboardController < ApplicationController
+
+  def profile
+    @checks = current_user.checks
+  end
+
+end
+```
+
+
 ## Models <a name="model"></a>
 We need to create the checks and vulnerabilities table. we can do this by creating a new model or standalone migration. 
 Lets do **checks** table first.
@@ -276,6 +373,7 @@ end
 Note **app/models/vulnerabilitie.rb** has been created and is not used for anything.
 
 Note I had a to rename `vulnerabilitie.rb` to `vulnerability.rb`. What i should have done was rails generate model Vulnerability and all would have been correctly named etc. Lesson learned!
+
 
 
 
