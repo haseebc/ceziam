@@ -42,6 +42,7 @@ class CheckService
 
     begin
       ssh = Net::SSH.start(@jumphost, @username, password: @password)
+        
       res = ssh.exec!(@cmd)
       ssh.close
       puts res
