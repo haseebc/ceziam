@@ -417,3 +417,21 @@ CheckService class run method is the calling of the scripts to launch the attack
 
 ## Java Scripts Used <a name="js"></a> 
 ### Timer check for script to run <a name="timerjs"></a> 
+`views/checks/show.html.erb`
+```html
+<% if @check.completed? %>
+<p> check completed
+
+<% else %>
+
+<p> scan in progress
+
+<script>
+    setTimeout(function(){
+      window.location.reload(1);
+    }, 30000);
+</script>
+
+<% end %>
+```
+
