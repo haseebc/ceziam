@@ -13,7 +13,8 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
     1. [checks table](#checks)
 6. [Attack Engine](#attackengine)
     1. [Attack Calls](#attackcalls)
-
+7. [Java Scripts Used](#js)
+    1. [Timer check for script to run](#timerjs)
 
 ## Overview
 ### Skeleton <a name="skeleton"></a>
@@ -109,6 +110,24 @@ You can just copy the URL page as such below. The css won't work, we'll get that
   });
 </script>
 ```
+### Application.html.erb
+This is a core file used to serve views.
+Make sure that javascripts are in asset pipeline. This requires new file `/app/assets/javascripts/javascript.js
+```javascript
+//= require rails-ujs
+//= require jquery
+//= require bootstrap
+//= require_tree .
+
+$(document).ready(function(){
+    $( "a.scroll" ).click(function( event ) {
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
+    });
+});
+```
+
+
 ## Routes
 ### Routing <a name="routes"></a>
 ```ruby
@@ -395,3 +414,6 @@ Inputting attack domain results in action /checks#report-banner-1. Create action
         HardWorker.perform_async(id)
     end
 CheckService class run method is the calling of the scripts to launch the attack.
+
+## Java Scripts Used <a name="js"></a> 
+### Timer check for script to run <a name="timerjs"></a> 
