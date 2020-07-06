@@ -44,9 +44,7 @@ gem 'net-scp', '~> 1.2', '>= 1.2.1'
 gem 'net-ssh', '~> 6.1'
 gem 'pygments.rb'
 gem 'redcarpet'
-# Sidekiq downgraded from 6.x
-gem 'sidekiq', '5.2.7'
-#  gem 'sidekiq'
+gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sitemap_generator'
 
