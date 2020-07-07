@@ -37,12 +37,11 @@ class CheckService
 
     @jumphost = 'websec.app'
     @username = 'checksuser'
-    @password = 'barcel0na777'
+    @password = ENV['PASS_SECRET']
     @cmd = "nmap -sV -oX /var/www/html/output2.xml -p #{ports_to_check} #{@target}"
 
     begin
       ssh = Net::SSH.start(@jumphost, @username, password: @password)
-        
       res = ssh.exec!(@cmd)
       ssh.close
       puts res
@@ -61,7 +60,7 @@ class CheckService
   def subdomains_check(target)
     @jumphost = 'websec.app'
     @username = 'checksuser'
-    @password = 'barcel0na777'
+    @password = ENV['PASS_SECRET']
 
     # attacksurface_check
     # this is using a hacked version of Enumall.sh, which is based on the Recon-Ng. Enumall.sh uses Google scraping, Bing scraping, Baidu scraping, Netcraft, and brute forcing using a wordlist. You can see a demo of the script here:
