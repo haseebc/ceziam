@@ -47,6 +47,8 @@ gem 'redcarpet'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sitemap_generator'
+# Gem added 07072020
+gem 'figaro'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
