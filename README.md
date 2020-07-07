@@ -17,6 +17,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
     1. [Timer check for script to run](#timerjs)
 8. [Redis and Heroku](#redisandheroku)
     1. [Useful Heroku comamnds](#herokucommands)
+    2. [Sidekiq overview and how to deploy to Heroku](#sidekiq)
 
 
 ## Overview
@@ -441,9 +442,10 @@ CheckService class run method is the calling of the scripts to launch the attack
 ### Useful Heroku comamnds <a name="herokucommands"></a> 
 ```bash
 heroku logs --tail
+heroku restart
 ```
 
-### Sidekiq overview and how to deploy it to Heroku
+### Sidekiq overview and how to deploy it to Heroku <a name="sidekiq"></a> 
 **Procfile** Write this as follows:
 ```
 web: bundle exec puma -C config/puma.rb
@@ -459,11 +461,21 @@ Also do follwoing in Heroku
 ```heroku config:set REDIS_PROVIDER=REDISTOGO_URL```
 **redis.rb**
 ```ruby
+$redis = Redis.new
 
+url = ENV['REDISTOGO_URL']
+
+if url
+  Sidekiq.configure_server do |config|
+    config.redis = { url: url }
+  end
+
+  Sidekiq.configure_client do |config|
+    config.redis = { url: url }
+  end
+  $redis = Redis.new(url: url)
+end
 ```
-
-
-
 
 #### Useful Links
 https://devcenter.heroku.com/articles/redistogo
