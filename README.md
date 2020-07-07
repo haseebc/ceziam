@@ -15,6 +15,9 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
     1. [Attack Calls](#attackcalls)
 7. [Java Scripts Used](#js)
     1. [Timer check for script to run](#timerjs)
+8. [Redis and Heroku](#redisandheroku)
+    1. [Useful Heroku comamnds](#herokucommands)
+
 
 ## Overview
 ### Skeleton <a name="skeleton"></a>
@@ -434,4 +437,11 @@ CheckService class run method is the calling of the scripts to launch the attack
 
 <% end %>
 ```
+## Redis and Heroku <a name="redisandheroku"></a> 
+### Useful Heroku comamnds <a name="herokucommands"></a> 
+```bash
+heroku logs --tail
+```
+
+
 
