@@ -443,5 +443,31 @@ CheckService class run method is the calling of the scripts to launch the attack
 heroku logs --tail
 ```
 
+### Sidekiq overview and how to deploy it to Heroku
+**Procfile** Write this as follows:
+```
+web: bundle exec puma -C config/puma.rb
+worker: bundle exec sidekiq -C config/sidekiq.yml
+```
+**sidekiq.yml**
+The point of this is to adhere to the lciensing requirements of Redis, keep to throttle the number of workers. Can be increased later witha  cost of using pro version of redistogo.
+```
+:concurrency:  3
+```
+**Heroku change** Make sure in Heroku Resources menu the `bundle exec sidekiq -C config/sidekiq.yml`is activated.
+Also do follwoing in Heroku
+```heroku config:set REDIS_PROVIDER=REDISTOGO_URL```
+**redis.rb**
+```ruby
+
+```
+
+
+
+
+#### Useful Links
+https://devcenter.heroku.com/articles/redistogo
+
+
 
 
