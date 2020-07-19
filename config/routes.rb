@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'checks/full_report'
   get 'about', to: 'pages#about'
+  get 'glossary', to: 'pages#glossary'
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
