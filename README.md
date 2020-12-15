@@ -1,4 +1,6 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+**Purpose:**
+This tool is built to aid security engineers, developers and architects to identify the attack surface of a target organisation.
+
 # Ceziam, How It Was Written 
 # Table of contents
 
