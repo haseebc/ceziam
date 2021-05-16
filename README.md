@@ -39,7 +39,7 @@ Please feel free to connect to ceziam.com and use this feely available Cyber Sec
 8. [Redis and Heroku](#redisandheroku)
     1. [Useful Heroku comamnds](#herokucommands)
     2. [Sidekiq overview and how to deploy to Heroku](#sidekiq)
-
+    23. [Sidekiq overview and how to deploy to Heroku](#sidekiq)
 
 ## Overview
 ### Skeleton <a name="skeleton"></a>
@@ -459,7 +459,7 @@ CheckService class run method is the calling of the scripts to launch the attack
 
 <% end %>
 ```
-## Redis and Heroku <a name="redisandheroku"></a> 
+## Troubleshooting: Redis, Heroku, Db <a name="redisandheroku"></a> 
 ### Useful Heroku comamnds <a name="herokucommands"></a> 
 ```bash
 heroku logs --tail
@@ -496,6 +496,25 @@ if url
   end
   $redis = Redis.new(url: url)
 end
+```
+### Database <a name="database"></a> 
+DATABASE RESTART
+>rails db:reset
+
+DATABASE DOES NOT START
+>rm /usr/local/var/postgres/postmaster.pid
+
+
+DATABASE NEEDS TOBE MANUALLY STARTED
+```ruby
+DATABASE RESTART
+>rails db:reset
+
+DATABASE DOES NOT START
+>rm /usr/local/var/postgres/postmaster.pid
+brew services restart postgresql
+pg_ctl -D /usr/local/var/postgres start
+rails db:create
 ```
 
 #### Useful Links
