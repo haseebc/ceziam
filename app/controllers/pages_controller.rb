@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  skip_before_action :authenticate_user!, only: %i[home about glossary healthcheck]
+  skip_before_action :authenticate_user!, only: %i[home about glossary healthcheck landing]
 
   def home; end
 
@@ -9,5 +9,7 @@ class PagesController < ApplicationController
   def glossary; end
 
   def healthcheck; end
+
+  def landing; end
 
 end
