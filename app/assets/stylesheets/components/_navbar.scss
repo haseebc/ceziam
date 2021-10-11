@@ -75,4 +75,31 @@
     border-left: 1px solid #E6E6E6;
     border-top: 1px solid #E6E6E6;
   }
-  
+  .navbar-ceziam {
+
+    background: white;
+    transition: all 0.3s ease;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar-ceziam-link:hover {
+    color: #1fd06f;
+    text-decoration: none;
+  }
+  .navbar-ceziam-link {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #5a5b58;
+  }
+  .navbar-wagon-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-wagon-item {
+    cursor: pointer;
+    padding: 0 20px;
+  }
