@@ -1,0 +1,33 @@
+.text-section-title {
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+    color: #1d2d35;
+    font-size: 330%;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    
+
+  }
+
+  .text-section-navbar {
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+    color: #1d2d35;
+    font-size: 100%;
+    transition: all 0.2s ease;
+    transition-property: text-decoration-color, text-decoration-thickness, text-decoration-width;
+    text-decoration-thickness: 0.1em;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+  }
+
+  .text-section-navbar-try {
+    font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+    color: white;
+    font-size: 100%;
+    transition: all 0.2s ease;
+    transition-property: text-decoration-color, text-decoration-thickness, text-decoration-width;
+    text-decoration-thickness: 0.1em;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+  }
