@@ -83,3 +83,9 @@ gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dab
 
 # Added 11 Oct 2021
 gem 'bootstrap'
+
+# Added 11 Oct 2021
+gem 'bootstrap'
+# Added 25 Oct 2021
+gem 'cloudinary', '~> 1.16.1'
+
