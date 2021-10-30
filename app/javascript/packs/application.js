@@ -23,7 +23,10 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
+import "jquery";
+import "popper.js";
 import "bootstrap";
+import "../stylesheets/application";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

@@ -9,6 +9,7 @@
 
       gtag('config', 'UA-121868609-1');
     </script>
+    
 
     <%= favicon_link_tag 'favicon.ico' %>
 
@@ -21,7 +22,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--  Removed due to errors in heroku
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
+    <%= stylesheet_link_tag "application", media: 'all', 'data-turbolinks-track': 'reload'  %>
+
     <%= display_meta_tags site: 'CEZIAM' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
