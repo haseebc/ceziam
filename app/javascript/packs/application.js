@@ -23,8 +23,6 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
-import "jquery";
-import "popper.js";
 import "bootstrap";
 
 
