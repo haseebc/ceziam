@@ -171,4 +171,31 @@
     .contact-button {
       padding-left: 0px !important;
     }
+
+    .pink-buttons {
+      border: #FFE227 2px solid;
+      background: #FFE227;
+      font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+      color: #1d2d35;
+      font-size: 100%;
+      font-weight: bold;
+      font-size: calc(1.1em + 0.85vw);
+      letter-spacing: -0.03em;
+      line-height: 1.5;
+      letter-spacing: -0.02em;
+    }
+    
+    .pink-buttons:hover{
+      border: #1d2d35 2px solid;
+      background: #1d2d35;
+      font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+      color: #FFE227;
+      font-size: 100%;
+      font-weight: bold;
+      font-size: calc(1.1em + 0.85vw);
+      letter-spacing: -0.03em;
+      line-height: 1.5;
+      letter-spacing: -0.02em;
+      transition: 0.4s;
+    }
     
