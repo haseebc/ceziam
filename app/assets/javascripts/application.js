@@ -9,3 +9,5 @@ $(document).ready(function(){
         $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
     });
 });
+
+console.log('Hello from application.js')

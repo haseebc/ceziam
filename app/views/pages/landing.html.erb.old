@@ -18,6 +18,7 @@
         </script>
         -->
         <!-- Google result description-->
+        
         <meta name="description" content="All in one cloud based tool for securing whatyou build and what you host.">
         <!-- og Is Open Graph tagging used by Facebook and Twitter has a siilar one.-->
         <!--  Essential META Tags -->
@@ -31,8 +32,8 @@
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     </head>
     <body>
-
-      <div class="background-white">
+    <div class="background-white">
+      <%= render 'shared/navbar-simple' %>
       <%= render 'shared/nav-bar-test' %>
         <div class="container">
           <h1 class="text-center mx-auto text-section-title" style="width: 40rem;">The Cloud Based Toolset for Securing What You Build.</h1>
@@ -42,7 +43,6 @@
           <%= render 'shared/landingcards' %>
         </div>
       </div>
-
   </body>
 </html>
 
