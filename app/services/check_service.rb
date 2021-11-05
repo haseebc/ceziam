@@ -21,6 +21,9 @@ class CheckService
     subdomain_response = subdomains_check(@target)
     @check.attacksurface = subdomain_response if subdomain_response
 
+    vercheck_response = version_check(@target)
+    @check.versionvuls = vercheck_response if vercheck_response
+
     end_checks = Time.now
     duration_checks = (end_checks - begin_checks)
 
@@ -55,7 +58,7 @@ class CheckService
     myJSON2 = myXML2.to_json
 
     myJSON2
-    end
+  end
 
   def subdomains_check(target)
     @jumphost = 'websec.app'
@@ -84,6 +87,22 @@ class CheckService
     # @subdomains_neat = JSON.pretty_generate(subdomains)
 
     subdomains
+  end
+
+  def version_check(_target)
+    @jumphost = 'websec.app'
+    @username = 'checksuser'
+    @password = ENV['PASS_SECRET']
+    @cmd = "cd /var/www/html && nmap -sV --script=vulners -oX /var/www/html/vercheck_output1.xml #{@target}"
+    begin
+      ssh = Net::SSH.start(@jumphost, @username, password: @password)
+      res = ssh.exec!(@cmd)
+      ssh.close
+      puts res
+    rescue StandardError
+      puts "Unable to connect to #{@jumphost} using #{@username}/#{@password}"
+    end
+
   end
 
 end
