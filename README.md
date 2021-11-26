@@ -40,6 +40,7 @@ Please feel free to connect to ceziam.com and use this feely available Cyber Sec
     1. [Useful Heroku comamnds](#herokucommands)
     2. [Sidekiq overview and how to deploy to Heroku](#sidekiq)
     23. [Sidekiq overview and how to deploy to Heroku](#sidekiq)
+9. [Developing & Deploying](#developdeploy)
 
 ## Overview
 ### Skeleton <a name="skeleton"></a>
@@ -520,6 +521,6 @@ rails db:create
 #### Useful Links
 https://devcenter.heroku.com/articles/redistogo
 
-
+## Developing & Deploying <a name="developdeploy"></a> 
 
 
