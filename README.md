@@ -527,6 +527,10 @@ Production https://git.heroku.com/ceziamv1.git
 Development https://git.heroku.com/devceziamv1.git
 
 ### Github
-In Github we have a production branch and use master as development branch. To my mind it’s more convenient to dev from master in local and after validating and merging a PR, we can merge master into production then deploy.
-What do you think about?
-
+#### origin/master
+We consider origin/master to be the main branch where the source code of HEAD always reflects a production-ready state.
+#### origin/develop
+We consider origin/develop to be the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release. 
+When the source code in the develop branch reaches a stable point and is ready to be released, all of the changes should be merged back into master somehow and then tagged with a release number. 
+#### Prod rollout 
+Therefore, each time when changes are merged back into master, this is a new production release by definition. We tend to be very strict at this, so that theoretically, we could use a Git hook script to automatically build and roll-out our software to our production servers everytime there was a commit on master.
