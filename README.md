@@ -521,6 +521,12 @@ rails db:create
 #### Useful Links
 https://devcenter.heroku.com/articles/redistogo
 
-## Developing & Deploying <a name="developdeploy"></a> 
+## Developing & Deploying <a name="developdeploy"></a>
+We have a production site and a development site in Heroku.
+Production https://git.heroku.com/ceziamv1.git
+Development https://git.heroku.com/devceziamv1.git
 
+### Github
+In Github we have a production branch and use master as development branch. To my mind it’s more convenient to dev from master in local and after validating and merging a PR, we can merge master into production then deploy.
+What do you think about?
 
