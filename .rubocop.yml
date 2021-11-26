@@ -1,6 +1,9 @@
 AllCops:
   NewCops: enable
   Exclude:
+    - vendor/**/*
+    - Gemfile.lock
+    - Rakefile
     - 'bin/**/*'
     - 'db/**/*'
     - 'config/**/*'
@@ -9,34 +12,138 @@ AllCops:
     - 'support/**/*'
     - 'tmp/**/*'
     - 'test/**/*'
+  TargetRubyVersion: 2.5.1
 
-Style/ConditionalAssignment:
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "default": "()"
+    "%i": "[]"
+    "%w": "[]"
+
+Style/RescueStandardError:
+  Exclude:
+    - lib/tasks/*
+
+Lint/UriEscapeUnescape:
   Enabled: false
-Style/StringLiterals:
+
+Lint/SafeNavigationWithEmpty:
   Enabled: false
-Style/RedundantReturn:
+
+Lint/AssignmentInCondition:
   Enabled: false
-Style/Documentation:
-  Enabled: false
-Style/WordArray:
-  Enabled: false
+
+Layout/EmptyLinesAroundArguments:
+  Exclude:
+    - lib/tasks/*
+
+Style/FormatStringToken:
+  Exclude:
+    - lib/tasks/*
+
 Metrics/AbcSize:
-  Enabled: false
-Style/MutableConstant:
-  Enabled: false
-Style/SignalException:
-  Enabled: false
-Metrics/CyclomaticComplexity:
-  Enabled: false
-Style/MissingRespondToMissing:
-  Enabled: false
-Style/MethodMissingSuper:
-  Enabled: false
-Style/FrozenStringLiteralComment:
-  Enabled: false
+  Max: 60
+  Exclude:
+    - app/models/vulnerability.rb
+
 Layout/LineLength:
   Max: 120
-Style/EmptyMethod:
+  Exclude:
+    - "lib/tasks/*"
+
+Metrics/PerceivedComplexity:
+  Max: 100
+
+Metrics/ParameterLists:
+  Max: 7
+
+Metrics/ClassLength:
+  Max: 500
+
+Metrics/CyclomaticComplexity:
+  Max: 17
+  Exclude:
+    - app/models/vulnerability.rb
+
+Metrics/ModuleLength:
+  Max: 120
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/support/*"
+
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - app/models/vulnerability.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "**/routes.rb"
+    - "**/**/*.rake"
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Style/FrozenStringLiteralComment:
   Enabled: false
-Bundler/OrderedGems:
+
+Layout/ExtraSpacing:
+  # When true, allows most uses of extra spacing if the intent is to align
+  # things with the previous or next line, not counting empty lines or comment
+  # lines.
+  AllowForAlignment: true
+
+Style/Documentation:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines
+  SupportedStyles:
+    - empty_lines
+    - no_empty_lines
+
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: no_empty_lines
+  SupportedStyles:
+    - empty_lines
+    - no_empty_lines
+
+Layout/EmptyLinesAroundBlockBody:
+  Description: "Keeps track of empty lines around block bodies."
+  Enabled: false
+
+Layout/EmptyLines:
+  Description: "Don't use several empty lines in a row."
+  Enabled: true
+
+Layout/EndOfLine:
+  Description: 'Use Unix-style line endings.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#crlf'
+  Enabled: true
+
+# Indent one level for follow-up lines
+# https://github.com/troessner/reek/issues/553
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/WordArray:
+  Description: 'Use %w or %W for arrays of words.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-w'
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
