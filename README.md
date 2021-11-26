@@ -523,8 +523,10 @@ https://devcenter.heroku.com/articles/redistogo
 
 ## Developing & Deploying <a name="developdeploy"></a>
 We have a production site and a development site in Heroku.
-Production https://git.heroku.com/ceziamv1.git
-Development https://git.heroku.com/devceziamv1.git
+### Heroku Development
+https://devceziamv1.herokuapp.com/
+### Heroku Production
+https://ceziamv1.herokuapp.com/
 
 ### Github
 #### origin/master
