@@ -45,6 +45,7 @@ gem 'net-ssh', '~> 6.1'
 gem 'pygments.rb'
 gem 'redcarpet'
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'sidekiq-failures'
 gem 'sitemap_generator'
 # Gem added 07072020
