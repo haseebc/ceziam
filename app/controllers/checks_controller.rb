@@ -1,4 +1,5 @@
 class ChecksController < ApplicationController
+
   skip_before_action :authenticate_user!, only: %i[create show]
 
   def new
@@ -6,7 +7,6 @@ class ChecksController < ApplicationController
   end
 
   def create
-   
     hostname_verified = hostname_valid?(params[:hostname])
     if hostname_verified
       @check = Check.new(hostname: hostname_verified)
@@ -30,16 +30,15 @@ class ChecksController < ApplicationController
   end
 
   def show
-    
     @check = Check.find(params[:id])
   end
 
   def full_report
     @check = Check.find(params[:check_id])
-    unless @check.user
-      @check.user = current_user
-      @check.save
-    end
+    return if @check.user
+
+    @check.user = current_user
+    @check.save
   end
 
   private
@@ -50,13 +49,9 @@ class ChecksController < ApplicationController
 
   def hostname_valid?(user_input)
     valid_hostname_regex = /^(?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11}?$/
-    user_input.tr!('/', '') if user_input.end_with? '/'
+    user_input.delete_prefix!('https://') if user_input.start_with?('https://')
+    user_input.delete_suffix!('/') if user_input.end_with? '/'
     user_input.match(valid_hostname_regex)
   end
 
 end
-
-
-
-
-
