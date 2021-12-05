@@ -525,6 +525,18 @@ https://devcenter.heroku.com/articles/redistogo
 We have a production site and a development site in Heroku.
 ### Heroku Development
 https://devceziamv1.herokuapp.com/
+```ruby
+heroku create devceziamv1 --region eu
+
+git remote add develop git@heroku.com:devceziamv1.git
+
+git push develop master
+
+heroku config:set REDIS_PROVIDER=REDISCLOUD_URL --app devceziamv1
+
+heroku run rails db:migrate --app devceziamv1
+```   
+    
 ### Heroku Production
 https://ceziamv1.herokuapp.com/
 
