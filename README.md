@@ -480,8 +480,8 @@ The point of this is to adhere to the lciensing requirements of Redis, keep to t
 ```
 **Heroku change** Make sure in Heroku Resources menu the `bundle exec sidekiq -C config/sidekiq.yml`is activated.
 Also do follwoing in Heroku
-```heroku config:set REDIS_PROVIDER=REDISTOGO_URL```
-**redis.rb**
+```heroku config:set REDIS_PROVIDER=REDISTOGO_URL``` as described here https://github.com/mperham/sidekiq/wiki/Using-Redis#using-an-env-variable
+####redis.rb####
 ```ruby
 $redis = Redis.new
 
