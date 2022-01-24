@@ -41,6 +41,10 @@ class ChecksController < ApplicationController
     @check.save
   end
 
+  def vercheck
+    render json: @myJSON_vercheck
+  end
+
   private
 
   def hostname_param
