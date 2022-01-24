@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'glossary', to: 'pages#glossary'
   get 'landing', to: 'pages#landing'
   get 'healthcheck', to: 'pages#healthcheck'
+  get 'vercheck', to: 'pages#vercheck'
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
