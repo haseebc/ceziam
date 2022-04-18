@@ -1,3 +1,8 @@
+CODE BASE DEPRACATED
+
+Prod codebase is https://github.com/haseebc/ceziam-prod-v1
+
+
 **Purpose:**
 This tool is built to aid security engineers, developers and architects to identify the attack surface of a target organisation.
 
